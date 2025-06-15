@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support A QR Hub</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .card {
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+
+		   .paypal-container {
+			margin-top: 20px;
+			text-align: center;
+		}
+
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Mobile-friendly adjustments */
+        @media (max-width: 768px) {
+            .paypal-container {
+                padding: 20px;
+            }
+        }
+
+        /* Add custom styling to the PayPal button container to center everything */
+        .paypal-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Support A QR Hub
+            </div>
+            <div class="card-body">
+                <p>This is a free tool, and if you’d like to support us, please consider making a donation. Your generosity helps us improve and keep the service free!</p>
+                <p>If you'd like to donate, use the button below:</p>
+                <p>Support for A QR Hub, We offer a free QR code generation service, and your generous contributions help us keep it running.</p>
+                <p>Every contribution, big or small, makes a difference.</p>
+                
+		
+				
+					
+							
+  <!-- PayPal Donate Button via SDK (Popup Style) -->
+			<div class="paypal-container text-center mt-4">
+			  <div id="donate-button-container">
+				<div id="donate-button"></div>
+			  </div>
+			</div>
+
+			<!-- Load PayPal Donate SDK -->
+			<script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+			<script>
+			  PayPal.Donation.Button({
+				env: 'production',
+				hosted_button_id: 'UK7RXH56U7S7C',
+				image: {
+				  src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif',
+				  alt: 'Donate with PayPal button',
+				  title: 'PayPal - The safer, easier way to pay online!'
+				}
+			  }).render('#donate-button');
+			</script>
+
+<br>
+
+<p>Contact us at <a href="mailto:admin@aqrhub.com">admin@aqrhub.com</a>.</p>
+
+                
+                <p>Thank you for your support!</p>
+                <a href="{{ url_for('index') }}" class="back-link">Back to QR Code Generator</a>
+            </div>
+        </div>
+
+        <!---<div class="footer">
+            <p>Thank you for your support!</p>
+            <a href="{{ url_for('index') }}" class="back-link">Back to QR Code Generator</a>
+        </div> -->
+    </div>
+</body>
+</html>

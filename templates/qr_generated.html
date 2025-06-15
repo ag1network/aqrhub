@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generated</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+        }
+        .card {
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .short-code-box {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .instructions {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .qr-code-image {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h3 class="card-title">Your QR Code has been Generated!</h3>
+            <div class="short-code-box">
+                <p><strong>Short Code:</strong> {{ short_code }}</p>
+            </div>
+
+            <div class="instructions">
+                <p>You can now use the above Short Code to access and update your QR Code link later.</p>
+                <p>To update your QR code with a new link, go to the <strong>edit dynamic link</strong> section and simply enter the short code.</p>
+                <p>Once entered, your QR code will point to the new link!</p>
+                <p><strong>Important:</strong> Please save the short code or take a screenshot so you can use it again later.</p>
+            </div>
+
+            <div class="qr-code-image">
+                <img src="{{ url_for('static', filename='qr_codes/' + png_filename) }}" alt="QR Code" class="img-fluid">
+            </div>
+
+            <div class="mt-4">
+                <a href="{{ url_for('generate') }}" class="btn btn-primary">Generate Another QR Code</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

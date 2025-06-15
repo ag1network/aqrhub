@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center content */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 20px;
+            max-width: 600px; /* Add a max-width for better control on large screens */
+            margin-left: auto;
+            margin-right: auto; /* Center container horizontally */
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .qr-preview {
+            width: 100%;
+            max-width: 400px; /* Set max width for desktop (change this value) */
+            margin: 0 auto; /* Center the QR code preview horizontally */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto; /* Ensures the height adjusts dynamically */
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .download-button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center; /* Center the button */
+            gap: 20px; /* Adds space between buttons */
+        }
+
+        .download-button a button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .download-button a button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #007BFF;
+            text-decoration: none;
+            display: block;
+            text-align: center; /* Center the link */
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 5px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .qr-preview {
+                width: 100%;  /* Ensures the QR code container fills the available width */
+                max-width: 500%;  /* Limit the QR code size to 90% of the viewport width */
+                margin: 0 auto; /* Center the QR code horizontally */
+                padding: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: auto; /* Ensures the height adjusts dynamically */
+            }
+
+            .download-button a button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>QR Code Preview</h2>
+
+        <!-- QR Code Preview -->
+        <div class="qr-preview">
+            <div>{{ svg_content | safe }}</div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="download-button">
+            <!-- Download SVG -->
+            <a href="{{ url_for('static', filename='qr_codes/' + svg_filename) }}" download="{{ svg_filename }}">
+                <button>Download SVG</button>
+            </a>
+
+            <!-- Download PNG (if PNG file is generated) -->
+            {% if png_filename %}
+                <a href="{{ url_for('static', filename='qr_codes/' + png_filename) }}" download="{{ png_filename }}">
+                    <button>Download PNG</button>
+                </a>
+            {% endif %}
+        </div>
+
+        <!-- Back Link -->
+        <br>
+        <a href="{{ url_for('index') }}" class="back-link">Back to QR Code Generator</a>
+    </div>
+</body>
+</html>
